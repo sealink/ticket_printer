@@ -72,3 +72,7 @@ Command-line Maven:
 
     cd ticket_printer
     mvn clean install
+
+## Running
+
+Build and run the web front-end, https://github.com/sealink/central_ticket
