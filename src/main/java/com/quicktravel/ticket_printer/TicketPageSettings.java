@@ -22,7 +22,7 @@ public class TicketPageSettings {
     this.height = height;
     this.margin = margin;
 
-    this.printWidth  = this.width  - (2 * Math.abs(xOffset));
+    this.printWidth  = this.width  - (2 * Math.abs(this.xOffset));
     this.printHeight = this.height - (2 * Math.abs(this.yOffset));
   }
 
