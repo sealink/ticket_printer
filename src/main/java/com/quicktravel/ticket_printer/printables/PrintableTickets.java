@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.quicktravel.ticket_printer.Ticket;
 import com.quicktravel.ticket_printer.TicketElement;
-import com.quicktravel.utils.NumberConvertor;
+import com.quicktravel.utils.NumberConverter;
 
 /**
  * A 'Printable' thing must have a 'print' method which is called when printed.
@@ -63,7 +63,7 @@ public class PrintableTickets implements Printable {
      * that preserves the "straightness" and "parallelness" of lines.
      */
     AffineTransform affineTransform = new AffineTransform();
-    affineTransform.scale(NumberConvertor.mm2finch(1), NumberConvertor.mm2finch(1));
+    affineTransform.scale(NumberConverter.mm2finch(1), NumberConverter.mm2finch(1));
     g.transform(affineTransform);
 
     return g;

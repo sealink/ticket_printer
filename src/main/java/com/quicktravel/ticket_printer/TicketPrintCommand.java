@@ -7,7 +7,7 @@ import java.util.Map;
 import com.quicktravel.ticket_printer.printables.NoSuchPrinterException;
 import com.quicktravel.ticket_printer.printables.NoTicketPageSettingsAssigned;
 import com.quicktravel.ticket_printer.ticketfactory.TicketListFactory;
-import com.quicktravel.utils.NumberConvertor;
+import com.quicktravel.utils.NumberConverter;
 
 public class TicketPrintCommand {
 
@@ -28,9 +28,9 @@ public class TicketPrintCommand {
 
   public void setTicketPageSettingsFromMap(Map<String, String> pageFormatMap) {
     double width, height, margin;
-    width = NumberConvertor.objectToDouble(pageFormatMap.get("width"));
-    height =  NumberConvertor.objectToDouble(pageFormatMap.get("height"));
-    margin =  NumberConvertor.objectToDouble(pageFormatMap.get("margin"));
+    width = NumberConverter.objectToDouble(pageFormatMap.get("width"));
+    height =  NumberConverter.objectToDouble(pageFormatMap.get("height"));
+    margin =  NumberConverter.objectToDouble(pageFormatMap.get("margin"));
     this.ticketPageSettings = new TicketPageSettings(width, height, margin);
   }
 

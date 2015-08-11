@@ -3,7 +3,7 @@ package com.quicktravel.ticket_printer;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
 
-import com.quicktravel.utils.NumberConvertor;
+import com.quicktravel.utils.NumberConverter;
 
 public class TicketPageSettings {
 
@@ -39,12 +39,12 @@ public class TicketPageSettings {
   // (it does not query the printer capabilities)
   private Paper getHardcodedPaper() {
     Paper paper = new Paper();
-    paper.setSize(NumberConvertor.mm2finch(this.width), NumberConvertor.mm2finch(this.height));
+    paper.setSize(NumberConverter.mm2finch(this.width), NumberConverter.mm2finch(this.height));
     paper.setImageableArea(
-            NumberConvertor.mm2finch(this.xOffset),
-            NumberConvertor.mm2finch(this.yOffset),
-            NumberConvertor.mm2finch(this.printWidth),
-            NumberConvertor.mm2finch(this.printHeight));
+            NumberConverter.mm2finch(this.xOffset),
+            NumberConverter.mm2finch(this.yOffset),
+            NumberConverter.mm2finch(this.printWidth),
+            NumberConverter.mm2finch(this.printHeight));
     return paper;
   }
 }
