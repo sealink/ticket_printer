@@ -3,7 +3,7 @@ package com.quicktravel.ticket_printer.ticketfactory;
 import java.util.Map;
 
 import com.quicktravel.ticket_printer.TicketElement;
-import com.quicktravel.utils.NumberConvertor;
+import com.quicktravel.utils.NumberConverter;
 
 public class TicketElementFactory {
 
@@ -50,7 +50,7 @@ public class TicketElementFactory {
     String rawValue = stringAttr(attrName);
 
     try {
-      intValue = NumberConvertor.objectToInt(rawValue);
+      intValue = NumberConverter.objectToInt(rawValue);
     } catch (NumberFormatException e) {
       System.out.println("-----------------");
       System.out.println("NumberFormatException: " + e.getMessage());

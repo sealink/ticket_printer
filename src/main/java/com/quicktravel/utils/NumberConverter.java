@@ -1,6 +1,6 @@
 package com.quicktravel.utils;
 
-public class NumberConvertor {
+public class NumberConverter {
 
   /**
    * Finch is a fractional inch, e.g. 1/72nd of an Inch This is useful when
@@ -16,7 +16,7 @@ public class NumberConvertor {
   public static int objectToInt(Object o) {
     if (o instanceof Long) {
       return ((Long) o).intValue();
-      
+
     } else if (o instanceof Integer) {
       return ((Integer) o).intValue();
 
@@ -37,7 +37,7 @@ public class NumberConvertor {
   public static double objectToDouble(Object o) {
     if (o instanceof Long) {
       return ((Long) o).doubleValue();
-      
+
     } else if (o instanceof Integer) {
       return ((Integer) o).doubleValue();
 
