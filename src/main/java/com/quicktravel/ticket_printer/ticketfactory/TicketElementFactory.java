@@ -37,12 +37,7 @@ public class TicketElementFactory {
   }
 
   private boolean booleanAttr(String attrName) {
-    String rawValue = stringAttr(attrName);    //TODO Why is it not string??
-    if (rawValue == null) {
-      return false;
-    } else {
-      return rawValue.equals("true");
-    }
+    return stringAttr(attrName).equals("true");
   }
 
   private int intAttr(String attrName) {
