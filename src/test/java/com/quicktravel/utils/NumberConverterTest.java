@@ -24,12 +24,12 @@ public class NumberConverterTest {
   @Test
   public void testObjectToDouble() {
     double val = 1;
-    double epsilom = 0.1;
-    assertEquals(NumberConverter.objectToDouble(new Long(1)), val, epsilom);
-    assertEquals(NumberConverter.objectToDouble(new Integer(1)), val, epsilom);
-    assertEquals(NumberConverter.objectToDouble(new Double(1)), val, epsilom);
-    assertEquals(NumberConverter.objectToDouble(new Float(1)), val, epsilom);
-    assertEquals(NumberConverter.objectToDouble("1"), val, epsilom);
+    double epsilon = 0.1;
+    assertEquals(NumberConverter.objectToDouble(new Long(1)), val, epsilon);
+    assertEquals(NumberConverter.objectToDouble(new Integer(1)), val, epsilon);
+    assertEquals(NumberConverter.objectToDouble(new Double(1)), val, epsilon);
+    assertEquals(NumberConverter.objectToDouble(new Float(1)), val, epsilon);
+    assertEquals(NumberConverter.objectToDouble("1"), val, epsilon);
   }
 
 }
