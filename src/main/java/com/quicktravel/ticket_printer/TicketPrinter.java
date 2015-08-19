@@ -65,7 +65,7 @@ public class TicketPrinter {
    */
   public boolean printTickets(List<Ticket> tickets) throws PrinterException, NoTicketPageSettingsAssigned {
     if (ticketPageSettings == null) {
-      throw new NoTicketPageSettingsAssigned();
+      throw new NoTicketPageSettingsAssigned("No TicketPageSettings were set");
     }
 
     // Generate a printable for tickets

@@ -19,7 +19,7 @@ public class PrintServiceLocator {
 
   public PrintService findByIndex(int index) throws NoSuchPrinterException {
     if (index >= getAll().length) {
-      throw new NoSuchPrinterException();
+      throw new NoSuchPrinterException("Unknown printer at index [" + Integer.toString(index) + "]");
     }
     
     return getAll()[index];
@@ -33,7 +33,7 @@ public class PrintServiceLocator {
     }
 
     // couldn't find it...
-    throw new NoSuchPrinterException();    
+    throw new NoSuchPrinterException("Unknown printer [" + name + "]");    
   }
 
   public void logAvailablePrinters() {
