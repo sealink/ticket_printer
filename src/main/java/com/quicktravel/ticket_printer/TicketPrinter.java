@@ -4,25 +4,22 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.List;
-
 import javax.print.PrintService;
 
-import com.quicktravel.ticket_printer.printables.NoSuchPrinterException;
-import com.quicktravel.ticket_printer.printables.NoTicketPageSettingsAssigned;
-import com.quicktravel.ticket_printer.printables.PrintServiceLocator;
+import com.quicktravel.ticket_printer.exceptions.NoSuchPrinterException;
+import com.quicktravel.ticket_printer.exceptions.NoTicketPageSettingsAssigned;
 import com.quicktravel.ticket_printer.printables.PrintableTickets;
 
 
 /*
  * TicketPrintCommand
- *  - base url (for images)    <-------- MISSING ! TODO!
  *  - page settings
  *  - printer
  *  - tickets Ticket[]
  */
 public class TicketPrinter {
 
-  private PrinterJob printerJob;
+  private final PrinterJob printerJob;
   private TicketPageSettings ticketPageSettings;
   static final Object ticketPrintingLock = new Object();
 
@@ -68,11 +65,11 @@ public class TicketPrinter {
    */
   public boolean printTickets(List<Ticket> tickets) throws PrinterException, NoTicketPageSettingsAssigned {
     if (ticketPageSettings == null) {
-      throw new NoTicketPageSettingsAssigned();
+      throw new NoTicketPageSettingsAssigned("No TicketPageSettings were set");
     }
 
     // Generate a printable for tickets
-    Printable printable = new PrintableTickets(tickets, "");
+    Printable printable = new PrintableTickets(tickets);
 
     // Lock here since each ticket prints as separate job -- OS will interleave tickets
     synchronized (ticketPrintingLock) {

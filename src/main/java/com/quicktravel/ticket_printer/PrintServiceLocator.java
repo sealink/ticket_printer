@@ -1,7 +1,10 @@
-package com.quicktravel.ticket_printer.printables;
+package com.quicktravel.ticket_printer;
 
 import java.awt.print.PrinterJob;
+
 import javax.print.PrintService;
+
+import com.quicktravel.ticket_printer.exceptions.NoSuchPrinterException;
 
 public class PrintServiceLocator {
 
@@ -16,7 +19,7 @@ public class PrintServiceLocator {
 
   public PrintService findByIndex(int index) throws NoSuchPrinterException {
     if (index >= getAll().length) {
-      throw new NoSuchPrinterException();
+      throw new NoSuchPrinterException("Unknown printer at index [" + Integer.toString(index) + "]");
     }
     
     return getAll()[index];
@@ -30,7 +33,7 @@ public class PrintServiceLocator {
     }
 
     // couldn't find it...
-    throw new NoSuchPrinterException();    
+    throw new NoSuchPrinterException("Unknown printer [" + name + "]");    
   }
 
   public void logAvailablePrinters() {
