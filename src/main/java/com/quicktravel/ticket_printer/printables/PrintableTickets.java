@@ -19,14 +19,10 @@ import com.quicktravel.utils.NumberConverter;
  */
 public class PrintableTickets implements Printable {
 
-//  private List<TicketElement> elements;
   private List<Ticket> tickets;
-  private String baseUrl;
 
-  public PrintableTickets(List<Ticket> tickets, String baseUrl) {
-    this.baseUrl = baseUrl;
+  public PrintableTickets(List<Ticket> tickets) {
     this.tickets = tickets;
-//    this.elements = ticket.getElements();
   }
 
   @Override
@@ -43,7 +39,7 @@ public class PrintableTickets implements Printable {
     // Iterate over its elements
     List<TicketElement> elements = ticket.getElements();
     for (TicketElement element : elements) {
-      new PrintableElement(element, baseUrl).drawOn(g);
+      new PrintableElement(element).drawOn(g);
     }
 
     return (PAGE_EXISTS);

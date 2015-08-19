@@ -15,7 +15,6 @@ import com.quicktravel.ticket_printer.printables.PrintableTickets;
 
 /*
  * TicketPrintCommand
- *  - base url (for images)    <-------- MISSING ! TODO!
  *  - page settings
  *  - printer
  *  - tickets Ticket[]
@@ -72,7 +71,7 @@ public class TicketPrinter {
     }
 
     // Generate a printable for tickets
-    Printable printable = new PrintableTickets(tickets, "");
+    Printable printable = new PrintableTickets(tickets);
 
     // Lock here since each ticket prints as separate job -- OS will interleave tickets
     synchronized (ticketPrintingLock) {
