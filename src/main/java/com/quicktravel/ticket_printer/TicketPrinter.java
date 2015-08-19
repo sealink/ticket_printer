@@ -4,12 +4,10 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.List;
-
 import javax.print.PrintService;
 
-import com.quicktravel.ticket_printer.printables.NoSuchPrinterException;
-import com.quicktravel.ticket_printer.printables.NoTicketPageSettingsAssigned;
-import com.quicktravel.ticket_printer.printables.PrintServiceLocator;
+import com.quicktravel.ticket_printer.exceptions.NoSuchPrinterException;
+import com.quicktravel.ticket_printer.exceptions.NoTicketPageSettingsAssigned;
 import com.quicktravel.ticket_printer.printables.PrintableTickets;
 
 

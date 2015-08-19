@@ -4,8 +4,8 @@ import java.awt.print.PrinterException;
 import java.util.List;
 import java.util.Map;
 
-import com.quicktravel.ticket_printer.printables.NoSuchPrinterException;
-import com.quicktravel.ticket_printer.printables.NoTicketPageSettingsAssigned;
+import com.quicktravel.ticket_printer.exceptions.NoSuchPrinterException;
+import com.quicktravel.ticket_printer.exceptions.NoTicketPageSettingsAssigned;
 import com.quicktravel.ticket_printer.ticketfactory.TicketListFactory;
 import com.quicktravel.utils.NumberConverter;
 

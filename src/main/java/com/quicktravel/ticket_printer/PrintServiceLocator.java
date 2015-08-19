@@ -1,7 +1,10 @@
-package com.quicktravel.ticket_printer.printables;
+package com.quicktravel.ticket_printer;
 
 import java.awt.print.PrinterJob;
+
 import javax.print.PrintService;
+
+import com.quicktravel.ticket_printer.exceptions.NoSuchPrinterException;
 
 public class PrintServiceLocator {
 
