@@ -1,18 +1,14 @@
 package com.quicktravel.ticket_printer;
 
 public class TicketElement {
-  
+
   private int x = 0;
   private int y = 0;
+  protected String value = "";
   private int fontSize = 10;
   private boolean bold = false;
   private boolean italic = false;
-  private String value = "";
 
-  public boolean isImage() {
-     return this.value.startsWith("image:");
-  }
-  
   public int getX() {
     return x;
   }
@@ -27,6 +23,26 @@ public class TicketElement {
 
   public void setY(int y) {
     this.y = y;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+  public boolean isImage() {
+    return isImageUrl() || isImageBase64();
+  }
+
+  public boolean isImageUrl() {
+     return this.value.startsWith("image:");
+  }
+
+  public boolean isImageBase64() {
+     return this.value.startsWith("imageBase64:");
   }
 
   public int getFontSize() {
@@ -53,17 +69,8 @@ public class TicketElement {
     this.italic = italic;
   }
 
-  public String getValue() {
-    return value;
-  }
-
   public String getImageValue() {
     return this.value.substring(6);
   }
-  
-  public void setValue(String value) {
-    this.value = value;
-  }
 
-    
 }
