@@ -70,7 +70,11 @@ public class TicketElement {
   }
 
   public String getImageValue() {
-    return this.value.substring(6);
+    if (isImageUrl()) {
+      return this.value.substring(6);
+    } else {
+      return this.value.substring(12);
+    }
   }
 
 }
