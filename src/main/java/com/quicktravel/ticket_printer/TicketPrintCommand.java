@@ -26,7 +26,7 @@ public class TicketPrintCommand {
     this.tickets = tickets;
   }
 
-  public void setTicketPageSettingsFromMap(Map<String, String> pageFormatMap) {
+  public void setTicketPageSettingsFromMap(Map<String, Object> pageFormatMap) {
     double width, height, margin;
     width = NumberConverter.objectToDouble(pageFormatMap.get("width"));
     height =  NumberConverter.objectToDouble(pageFormatMap.get("height"));
