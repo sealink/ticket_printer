@@ -11,7 +11,7 @@ import com.quicktravel.utils.NumberConverter;
 
 public class TicketPrintCommand {
 
-  int printerIndex;
+  String printerName = null;
   TicketPageSettings ticketPageSettings;
   List<Ticket> tickets;
 
@@ -34,14 +34,14 @@ public class TicketPrintCommand {
     this.ticketPageSettings = new TicketPageSettings(width, height, margin);
   }
 
-  public void setPrinter(int printerIndex) {
-    this.printerIndex = printerIndex;
+  public void setPrinterName(String printerName) {
+    this.printerName = printerName;
   }
   
   public void execute() throws PrinterException, NoSuchPrinterException, NoTicketPageSettingsAssigned {
     TicketPrinter ticketPrinter = new TicketPrinter();
     ticketPrinter.setTicketPageSettings(this.ticketPageSettings);
-    ticketPrinter.setPrinter(this.printerIndex);
+    ticketPrinter.setPrinter(this.printerName);
     ticketPrinter.printTickets(this.tickets);
   }
 }
