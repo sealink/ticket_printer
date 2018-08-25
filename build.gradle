@@ -1,0 +1,24 @@
+apply plugin: 'idea'
+apply plugin: 'java-library'
+apply plugin: 'maven'
+
+group = 'com.quicktravel'
+version = '1.2.1'
+
+description = """"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+repositories {
+     maven { url "https://repo.maven.apache.org/maven2" }
+}
+
+dependencies {
+    compile group: 'commons-codec', name: 'commons-codec', version:'1.6'
+    testCompile 'junit:junit:4.12'
+}
