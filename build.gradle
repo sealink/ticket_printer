@@ -2,17 +2,14 @@ apply plugin: 'idea'
 apply plugin: 'java-library'
 apply plugin: 'maven'
 
-group = 'com.quicktravel'
+group = 'au.com.sealink.printing'
 version = '1.2.1'
-
-description = """"""
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
-
 
 repositories {
      maven { url "https://repo.maven.apache.org/maven2" }
