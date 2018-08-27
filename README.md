@@ -1,6 +1,7 @@
-# ticket_printer
+[![Coverage Status](https://coveralls.io/repos/github/sealink/ticket_printer/badge.svg?branch=master)](https://coveralls.io/github/sealink/ticket_printer?branch=master)
+[![Build Status](https://travis-ci.org/sealink/ticket_printer.svg?branch=master)](https://travis-ci.org/sealink/ticket_printer)
 
-Back-end component for local printer service.
+Back-end library to handle printing tickets to a physical printer
 
 #### Deployment
 
@@ -37,7 +38,7 @@ Some example build tasks include
 
 * Project is maven compatible however we only publish to Bintray so you will need to manually configure
  the repository, full instructions can be found at the following site
- https://bintray.com/sealink/maven/ticket_printer
+ https://bintray.com/sealink/maven/printing
 * TravisCI is used to test / build and publish new versions.
 * JUnit is used for integration and unit level testing.
 
