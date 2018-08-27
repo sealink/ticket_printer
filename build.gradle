@@ -92,7 +92,7 @@ publishing {
                 classifier "sources"
             }
             groupId 'au.com.sealink'
-            artifactId 'ticket_printer'
+            artifactId 'printing'
             version project.version
             pom.withXml {
                 def root = asNode()
@@ -113,7 +113,7 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = 'ticket_printer'
+        name = 'printing'
         userOrg = 'sealink'
         licenses = ['MIT']
         vcsUrl = "https://github.com/sealink/ticket_printer.git"
