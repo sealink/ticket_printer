@@ -7,7 +7,7 @@ plugins {
     id 'checkstyle'
     id 'com.github.kt3k.coveralls' version '2.8.2'
 }
-group = 'au.com.sealink.printing'
+group = 'au.com.sealink'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -92,7 +92,7 @@ publishing {
                 classifier "sources"
             }
             groupId 'au.com.sealink'
-            artifactId 'sealink_printing'
+            artifactId 'ticket_printer'
             version project.version
             pom.withXml {
                 def root = asNode()
@@ -113,7 +113,7 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = 'sealink_printing'
+        name = 'ticket_printer'
         userOrg = 'sealink'
         licenses = ['MIT']
         vcsUrl = "https://github.com/sealink/ticket_printer.git"
