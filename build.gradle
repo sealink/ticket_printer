@@ -84,7 +84,6 @@ def pomConfig = {
     }
 }
 
-
 publishing {
     publications {
         mavenPublication(MavenPublication) {
@@ -92,7 +91,7 @@ publishing {
             artifact sourcesJar {
                 classifier "sources"
             }
-            groupId 'au.com.sealink.printing'
+            groupId 'au.com.sealink'
             artifactId 'sealink_printing'
             version project.version
             pom.withXml {
