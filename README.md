@@ -1,3 +1,4 @@
+[![Download](https://api.bintray.com/packages/sealink/maven/printing/images/download.svg) ](https://bintray.com/sealink/maven/printing/_latestVersion)
 [![Coverage Status](https://coveralls.io/repos/github/sealink/ticket_printer/badge.svg?branch=master)](https://coveralls.io/github/sealink/ticket_printer?branch=master)
 [![Build Status](https://travis-ci.org/sealink/ticket_printer.svg?branch=master)](https://travis-ci.org/sealink/ticket_printer)
 
