@@ -6,7 +6,7 @@ Back-end component for local printer service.
 
 Deployment is handled via gradle and travis if you follow the correct git conventions.
 
-If you are creating a new minor or major release than you would do the following.
+If you are creating a new minor or major release then you would do the following.
 
 * Create a new release branch, based upon the major and min
 ```concept
@@ -57,7 +57,7 @@ Edit ```app/build.gradle```
 Replace the original dependency, i.e.
 
 ```
-implementation 'au.com.sealink:ticket_printer:x.x.x'
+implementation 'au.com.sealink:printing:x.x.x'
 ```
 
 with
