@@ -1,0 +1,127 @@
+plugins {
+    id "com.jfrog.bintray" version "1.8.4"
+    id "maven-publish"
+    id 'java-library'
+    id 'net.nemerosa.versioning' version '2.7.1'
+    id 'jacoco'
+    id 'checkstyle'
+    id 'com.github.kt3k.coveralls' version '2.8.2'
+}
+group = 'au.com.sealink'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
+}
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
+}
+
+versioning {
+    branchEnv = ['TRAVIS_BRANCH', 'TRAVIS_TAG', 'TRAVIS_PULL_REQUEST_BRANCH', 'GIT_BRANCH']
+}
+
+if(versioning.info.tag == null) {
+    version = versioning.info.display
+}
+else {
+    version = versioning.info.tag
+}
+
+checkstyle {
+    toolVersion = '8.1'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile group: 'commons-codec', name: 'commons-codec', version:'1.6'
+    testCompile 'junit:junit:4.12'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name "MIT License"
+            url "http://www.opensource.org/licenses/mit-license.php"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "jmortlock"
+            name "John Mortlock"
+            email "john.mortlock@sealink.com.au"
+        }
+    }
+
+    scm {
+        url "https://github.com/sealink/ticket_printer.git"
+    }
+}
+
+publishing {
+    publications {
+        mavenPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+            groupId 'au.com.sealink'
+            artifactId 'printing'
+            version project.version
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'SeaLink Print Library')
+                root.appendNode('name', 'SeaLink Print Library')
+                root.appendNode('url', 'https://github.com/sealink/ticket_printer')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+
+    publications = ['mavenPublication']
+
+    pkg {
+        repo = 'maven'
+        name = 'printing'
+        userOrg = 'sealink'
+        licenses = ['MIT']
+        vcsUrl = "https://github.com/sealink/ticket_printer.git"
+        version {
+            name = project.version
+            desc = project.version
+            released  = new Date()
+        }
+    }
+    publish = true
+}
