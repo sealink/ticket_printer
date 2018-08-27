@@ -33,7 +33,6 @@ versioning {
     branchEnv = ['TRAVIS_BRANCH', 'TRAVIS_TAG', 'TRAVIS_PULL_REQUEST_BRANCH', 'GIT_BRANCH']
 }
 
-sourceCompatibility = 1.8
 if(versioning.info.tag == null) {
     version = versioning.info.display
 }
