@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
 import org.apache.commons.codec.binary.Base64;
 
 import au.com.sealink.printing.ticket_printer.TicketElement;
@@ -26,95 +27,95 @@ import au.com.sealink.printing.utils.NumberConverter;
 
 /**
  * This class represents a printable ticket.
- *
+ * <p>
  * Printable interface requires #print to be implemented (called when printed)
  */
 public class PrintableTickets implements Printable {
 
-  private ArrayList<Ticket> tickets = new ArrayList<>();
+    private ArrayList<Ticket> tickets = new ArrayList<>();
 
-  public PrintableTickets(Iterable<Ticket> tickets) {
-    for (Ticket ticket: tickets) {
-      this.tickets.add(ticket);
-    }
-  }
-
-  @Override
-  public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)  {
-    if (pageIndex >= tickets.size()) {
-      return (NO_SUCH_PAGE);
+    public PrintableTickets(Iterable<Ticket> tickets) {
+        for (Ticket ticket : tickets) {
+            this.tickets.add(ticket);
+        }
     }
 
-    Graphics2D g = configureGraphics(graphics, pageFormat);
+    @Override
+    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) {
+        if (pageIndex >= tickets.size()) {
+            return (NO_SUCH_PAGE);
+        }
 
-    // Pull out page of ticket
-    Ticket ticket = tickets.get(pageIndex);
+        Graphics2D g = configureGraphics(graphics, pageFormat);
 
-    // Iterate over its elements
-    for (TicketElement element : ticket.getElements()) {
-      printableElementFor(element).drawOn(g);
+        // Pull out page of ticket
+        Ticket ticket = tickets.get(pageIndex);
+
+        // Iterate over its elements
+        for (TicketElement element : ticket.getElements()) {
+            printableElementFor(element).drawOn(g);
+        }
+
+        return PAGE_EXISTS;
     }
 
-    return PAGE_EXISTS;
-  }
-
-  private PrintableElement printableElementFor(TicketElement element) {
-    if (element.isImage()) {
-      Image img = loadImage(element);
-      if (img == null) {
-        return new PrintableNullElement(element); 
-      } else {
-        return new PrintableImageElement(element, img);
-      }
-    } else {
-      return new PrintableTextElement(element);
+    private PrintableElement printableElementFor(TicketElement element) {
+        if (element.isImage()) {
+            Image img = loadImage(element);
+            if (img == null) {
+                return new PrintableNullElement(element);
+            } else {
+                return new PrintableImageElement(element, img);
+            }
+        } else {
+            return new PrintableTextElement(element);
+        }
     }
-  }
 
-  private Image loadImage(TicketElement element) {
-    Image img = null;
-    try {
-      if (element.isImageBase64()) {
-        String imgEncodedInBase64 = element.getImageValue();
-        img = loadImgFromBase64(imgEncodedInBase64);
-      } else {
-        img = loadImageFromUrl(element.getImageValue());
-      }
-    } catch (IOException ex) {
-      Logger logger = Logger.getLogger(PrintableElement.class.getName());
-      logger.log(Level.SEVERE, "Could not load image:\n" + element.getImageValue(), ex);
-    }    
-    return img;
-  }
-  
-  private Image loadImageFromUrl(String imageUrlString) throws IOException {
-    URL url = new URL(imageUrlString);
-    return ImageIO.read(url);
-  }
+    private Image loadImage(TicketElement element) {
+        Image img = null;
+        try {
+            if (element.isImageBase64()) {
+                String imgEncodedInBase64 = element.getImageValue();
+                img = loadImgFromBase64(imgEncodedInBase64);
+            } else {
+                img = loadImageFromUrl(element.getImageValue());
+            }
+        } catch (IOException ex) {
+            Logger logger = Logger.getLogger(PrintableElement.class.getName());
+            logger.log(Level.SEVERE, "Could not load image:\n" + element.getImageValue(), ex);
+        }
+        return img;
+    }
 
-  private Image loadImgFromBase64(String imgEncodedInBase64) throws IOException {
-    byte[] imgData = Base64.decodeBase64(imgEncodedInBase64);
-    InputStream in = new ByteArrayInputStream(imgData);
-    return ImageIO.read(in);
-  }
+    private Image loadImageFromUrl(String imageUrlString) throws IOException {
+        URL url = new URL(imageUrlString);
+        return ImageIO.read(url);
+    }
 
-  // Configure the graphics canvas
-  private Graphics2D configureGraphics(Graphics graphics, PageFormat pageFormat) {
-    Graphics2D g = (Graphics2D) graphics;
+    private Image loadImgFromBase64(String imgEncodedInBase64) throws IOException {
+        byte[] imgData = Base64.decodeBase64(imgEncodedInBase64);
+        InputStream in = new ByteArrayInputStream(imgData);
+        return ImageIO.read(in);
+    }
 
-    // Translate to fit to printable area
-    g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+    // Configure the graphics canvas
+    private Graphics2D configureGraphics(Graphics graphics, PageFormat pageFormat) {
+        Graphics2D g = (Graphics2D) graphics;
 
-    /**
-     * The AffineTransform class represents a 2D affine transform that performs
-     * a linear mapping from 2D coordinates to other 2D coordinates that
-     * preserves the "straightness" and "parallel" of lines.
-     */
-    AffineTransform affineTransform = new AffineTransform();
-    affineTransform.scale(NumberConverter.mm2finch(1), NumberConverter.mm2finch(1));
-    g.transform(affineTransform);
+        // Translate to fit to printable area
+        g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
 
-    return g;
-  }
+        /**
+         * The AffineTransform class represents a 2D affine transform that performs
+         * a linear mapping from 2D coordinates to other 2D coordinates that
+         * preserves the "straightness" and "parallel" of lines.
+         */
+        AffineTransform affineTransform = new AffineTransform();
+        affineTransform.scale(NumberConverter.mm2finch(1), NumberConverter.mm2finch(1));
+        g.transform(affineTransform);
+
+        return g;
+    }
 
 }
