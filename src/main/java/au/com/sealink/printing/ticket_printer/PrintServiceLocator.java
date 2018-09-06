@@ -1,15 +1,10 @@
 package au.com.sealink.printing.ticket_printer;
 
 import java.awt.print.PrinterJob;
-
 import javax.print.PrintService;
-
 import au.com.sealink.printing.ticket_printer.exceptions.NoSuchPrinterException;
 
 public class PrintServiceLocator {
-
-    public PrintServiceLocator() {
-    }
 
     /*
      * Returns list of printers (as PrintService objects)

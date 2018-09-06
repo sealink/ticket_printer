@@ -1,7 +1,6 @@
 package au.com.sealink.printing.ticket_printer;
 
 public class TicketElement {
-
     private int x = 0;
     private int y = 0;
     private String value = "";

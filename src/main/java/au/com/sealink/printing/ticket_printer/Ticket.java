@@ -1,7 +1,6 @@
 package au.com.sealink.printing.ticket_printer;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /* A ticket is defined by a list of elements
  *
@@ -9,7 +8,7 @@ import java.util.List;
  */
 public class Ticket {
 
-    private List<TicketElement> elements;
+    private ArrayList<TicketElement> elements = new ArrayList<>();
 
     public Iterable<TicketElement> getElements() {
         return this.elements;
