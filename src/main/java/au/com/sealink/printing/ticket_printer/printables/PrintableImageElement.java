@@ -11,7 +11,7 @@ class PrintableImageElement extends PrintableElement {
   private final double printerResolution = 72.0 / 25.4; // 72 dots per inch
   private final Image img;
   
-  public PrintableImageElement(TicketElement element, Image img) {
+  PrintableImageElement(TicketElement element, Image img) {
     super(element);
     this.img = img;
   }

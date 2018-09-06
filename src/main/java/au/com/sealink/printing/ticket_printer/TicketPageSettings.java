@@ -7,14 +7,14 @@ import au.com.sealink.printing.utils.NumberConverter;
 
 public class TicketPageSettings {
 
-  double width; // = 87f;
-  double height; // = 57f;
-  double margin; // = 2f;
+  private double width; // = 87f;
+  private double height; // = 57f;
+  private double margin; // = 2f;
   // Not customisable at this stage (through refactor)
-  double xOffset = 1.3f;
-  double yOffset = 1.3f;
-  double printWidth;
-  double printHeight;
+  private double xOffset = 1.3f;
+  private double yOffset = 1.3f;
+  private double printWidth;
+  private double printHeight;
 
 //  String baseUrl = "";
   public TicketPageSettings(double width, double height, double margin) {

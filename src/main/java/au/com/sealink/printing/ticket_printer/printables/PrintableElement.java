@@ -9,9 +9,9 @@ public abstract class PrintableElement {
   TicketElement element;
 
   // Fonts seem to need this multiplier to accurately position... 
-  protected final double fontMultiplier = 0.8;
+  final double fontMultiplier = 0.8;
 
-  public PrintableElement(TicketElement element) {
+  PrintableElement(TicketElement element) {
     this.element = element;
   }
 

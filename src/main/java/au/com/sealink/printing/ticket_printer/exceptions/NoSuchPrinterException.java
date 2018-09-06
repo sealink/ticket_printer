@@ -4,10 +4,6 @@ public class NoSuchPrinterException extends Exception {
 
   private static final long serialVersionUID = 1L;
 
-  public NoSuchPrinterException() {
-    super();
-  }
-
   public NoSuchPrinterException(String message) {
     super(message);
   }

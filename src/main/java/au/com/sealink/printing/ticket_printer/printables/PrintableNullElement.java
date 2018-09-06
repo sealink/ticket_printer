@@ -6,7 +6,7 @@ import au.com.sealink.printing.ticket_printer.TicketElement;
 
 class PrintableNullElement extends PrintableElement {
 
-  public PrintableNullElement(TicketElement element) {
+  PrintableNullElement(TicketElement element) {
     super(element);
   }
 

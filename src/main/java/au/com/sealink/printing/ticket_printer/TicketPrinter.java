@@ -10,7 +10,6 @@ import au.com.sealink.printing.ticket_printer.exceptions.NoSuchPrinterException;
 import au.com.sealink.printing.ticket_printer.exceptions.NoTicketPageSettingsAssigned;
 import au.com.sealink.printing.ticket_printer.printables.PrintableTickets;
 
-
 /*
  * TicketPrintCommand
  *  - page settings
@@ -21,7 +20,7 @@ public class TicketPrinter {
 
   private final PrinterJob printerJob;
   private TicketPageSettings ticketPageSettings;
-  static final Object ticketPrintingLock = new Object();
+  private static final Object ticketPrintingLock = new Object();
 
   public TicketPrinter() {
     this.printerJob = PrinterJob.getPrinterJob();
@@ -35,22 +34,6 @@ public class TicketPrinter {
     this.ticketPageSettings = ticketPageSettings;
   }
 
-  /* 
-   * Shows printer dialog, allowing user to choose printer
-   * Returns true if user hit's OK, false if CANCEL
-   */
-  public boolean printDialog() {
-    return printerJob.printDialog();
-  }
-
-  /*
-   * Set the printer by index from the known printServices
-   * */
-  public void setPrinter(int printerIndex) throws PrinterException, NoSuchPrinterException {
-    PrintService requestedPrintService = new PrintServiceLocator().findByIndex(printerIndex);
-    this.printerJob.setPrintService(requestedPrintService);
-  }
-
   /*
    * Set the printer by name from the known printServices
    * */
@@ -59,11 +42,10 @@ public class TicketPrinter {
     this.printerJob.setPrintService(requestedPrintService);
   }
 
-
-  /*
+   /*
    * Prints the tickets using the configured page sizes as set out in initializer-passed printerJob
    */
-  public boolean printTickets(List<Ticket> tickets) throws PrinterException, NoTicketPageSettingsAssigned {
+  public boolean printTickets(Iterable<Ticket> tickets) throws PrinterException, NoTicketPageSettingsAssigned {
     if (ticketPageSettings == null) {
       throw new NoTicketPageSettingsAssigned("No TicketPageSettings were set");
     }
@@ -76,8 +58,6 @@ public class TicketPrinter {
       printerJob.setPrintable(printable,  ticketPageSettings.getPageFormat());
       printerJob.print(null);
     }
-    
     return true;
   }
-
 }

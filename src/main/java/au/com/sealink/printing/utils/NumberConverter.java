@@ -13,45 +13,4 @@ public class NumberConverter {
     return mm * 72 / 25.4;
   }
 
-  public static int objectToInt(Object o) {
-    if (o instanceof Long) {
-      return ((Long) o).intValue();
-
-    } else if (o instanceof Integer) {
-      return ((Integer) o).intValue();
-
-    } else if (o instanceof Double) {
-      return ((Double) o).intValue();
-
-    } else if (o instanceof Float) {
-      return (int) ((Float) o).floatValue();
-
-    } else if (o instanceof String) {
-      return (int) Double.parseDouble(o.toString());
-
-    } else {
-      throw new NumberFormatException("Number formatted incorrectly");
-    }
-  }
-
-  public static double objectToDouble(Object o) {
-    if (o instanceof Long) {
-      return ((Long) o).doubleValue();
-
-    } else if (o instanceof Integer) {
-      return ((Integer) o).doubleValue();
-
-    } else if (o instanceof Double) {
-      return ((Double) o).doubleValue();
-
-    } else if (o instanceof Float) {
-      return (int) ((Float) o).doubleValue();
-
-    } else if (o instanceof String) {
-      return (int) Double.parseDouble(o.toString());
-
-    } else {
-      throw new NumberFormatException("Number formatted incorrectly");
-    }
-  }
 }

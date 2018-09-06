@@ -9,20 +9,18 @@ import java.util.List;
  */
 public class Ticket {
   
-  List<TicketElement> elements;
-  
-  public Ticket() {
-    this.elements = new ArrayList<TicketElement>();
-  }
-  
-  public Ticket(List<TicketElement> elements) {
-    this.elements = elements;
-  }
-  
-  public List<TicketElement> getElements() {
+  private List<TicketElement> elements;
+
+  public Iterable<TicketElement> getElements() {
     return this.elements;
   }
-  
+
+  public void addElements(Iterable<TicketElement> elements) {
+      for (TicketElement el : elements) {
+          addElement(el);
+      }
+  }
+
   public void addElement(TicketElement element) {
     this.elements.add(element);
   }

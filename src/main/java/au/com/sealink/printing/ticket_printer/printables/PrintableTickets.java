@@ -11,6 +11,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,14 +31,16 @@ import au.com.sealink.printing.utils.NumberConverter;
  */
 public class PrintableTickets implements Printable {
 
-  private List<Ticket> tickets;
+  private ArrayList<Ticket> tickets = new ArrayList<>();
 
-  public PrintableTickets(List<Ticket> tickets) {
-    this.tickets = tickets;
+  public PrintableTickets(Iterable<Ticket> tickets) {
+    for (Ticket ticket: tickets) {
+      this.tickets.add(ticket);
+    }
   }
 
   @Override
-  public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+  public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)  {
     if (pageIndex >= tickets.size()) {
       return (NO_SUCH_PAGE);
     }
@@ -50,7 +55,7 @@ public class PrintableTickets implements Printable {
       printableElementFor(element).drawOn(g);
     }
 
-    return (PAGE_EXISTS);
+    return PAGE_EXISTS;
   }
 
   private PrintableElement printableElementFor(TicketElement element) {

@@ -4,7 +4,7 @@ public class TicketElement {
 
   private int x = 0;
   private int y = 0;
-  protected String value = "";
+  private String value = "";
   private int fontSize = 10;
   private boolean bold = false;
   private boolean italic = false;

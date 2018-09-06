@@ -7,39 +7,39 @@ import au.com.sealink.printing.ticket_printer.TicketElement;
 
 class PrintableTextElement extends PrintableElement {
 
-  String FONTNAME = "Verdana";
+    private static final String FONTNAME = "Verdana";
 
-  public PrintableTextElement(TicketElement element) {
-    super(element);
-  }
-  
-  @Override
-  public void drawOn(Graphics2D g) {
-    Font currentFont = this.calculateFont(FONTNAME);
-    g.setFont(currentFont);
-    
-    // Adjust y for maximum ascent of all printable characters
-    int y = element.getY() + g.getFontMetrics(currentFont).getMaxAscent();
-
-    g.drawString(element.getValue(), element.getX(), y);
-  }
-  
-  private Font calculateFont(String fontName) {
-    return new Font(fontName, getFontStyle(), getPrintableFontSize());
-  }
-
-  private int getFontStyle() {
-    int style = Font.PLAIN;
-    if (element.isBold()) {
-      style |= Font.BOLD;
+    PrintableTextElement(TicketElement element) {
+        super(element);
     }
-    if (element.isItalic()) {
-      style |= Font.ITALIC;
+
+    @Override
+    public void drawOn(Graphics2D g) {
+        Font currentFont = this.calculateFont();
+        g.setFont(currentFont);
+
+        // Adjust y for maximum ascent of all printable characters
+        int y = element.getY() + g.getFontMetrics(currentFont).getMaxAscent();
+
+        g.drawString(element.getValue(), element.getX(), y);
     }
-    return style;
-  }
-  
-  private int getPrintableFontSize() {
-    return (int) (element.getFontSize() * super.fontMultiplier);
-  }
+
+    private Font calculateFont() {
+        return new Font(PrintableTextElement.FONTNAME, getFontStyle(), getPrintableFontSize());
+    }
+
+    private int getFontStyle() {
+        int style = Font.PLAIN;
+        if (element.isBold()) {
+            style |= Font.BOLD;
+        }
+        if (element.isItalic()) {
+            style |= Font.ITALIC;
+        }
+        return style;
+    }
+
+    private int getPrintableFontSize() {
+        return (int) (element.getFontSize() * super.fontMultiplier);
+    }
 }
