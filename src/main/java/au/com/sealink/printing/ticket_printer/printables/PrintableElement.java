@@ -6,16 +6,16 @@ import au.com.sealink.printing.ticket_printer.TicketElement;
 
 public abstract class PrintableElement {
 
-  TicketElement element;
+    TicketElement element;
 
-  // Fonts seem to need this multiplier to accurately position... 
-  protected final double fontMultiplier = 0.8;
+    // Fonts seem to need this multiplier to accurately position...
+    final double fontMultiplier = 0.8;
 
-  public PrintableElement(TicketElement element) {
-    this.element = element;
-  }
+    PrintableElement(TicketElement element) {
+        this.element = element;
+    }
 
-  // Each printable element type implements this
-  public abstract void drawOn(Graphics2D g);
+    // Each printable element type implements this
+    public abstract void drawOn(Graphics2D g);
 
 }
