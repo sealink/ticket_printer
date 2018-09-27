@@ -1,12 +1,15 @@
 package au.com.sealink.printing.ticket_printer;
 
+import java.util.EnumSet;
+
 public class TicketElement {
     private int x = 0;
     private int y = 0;
     private String value = "";
     private int fontSize = 10;
-    private boolean bold = false;
-    private boolean italic = false;
+    private Justification justification = Justification.LEFT;
+    private Underline underline = Underline.None;
+    private EnumSet<FontStyle> fontStyles = EnumSet.noneOf(FontStyle.class);
 
     public int getX() {
         return x;
@@ -53,19 +56,39 @@ public class TicketElement {
     }
 
     public boolean isBold() {
-        return bold;
+        return fontStyles.contains(FontStyle.Bold);
     }
 
     public void setBold(boolean bold) {
-        this.bold = bold;
+        if (bold) {
+            fontStyles.add(FontStyle.Bold);
+        } else {
+            fontStyles.remove(FontStyle.Bold);
+        }
     }
 
     public boolean isItalic() {
-        return italic;
+        return fontStyles.contains(FontStyle.Italic);
     }
 
     public void setItalic(boolean italic) {
-        this.italic = italic;
+        if (italic) {
+            fontStyles.add(FontStyle.Italic);
+        } else {
+            fontStyles.remove(FontStyle.Italic);
+        }
+    }
+
+    public boolean isInverted() {
+        return fontStyles.contains(FontStyle.Inverted);
+    }
+
+    public void setInverted(boolean isInverted) {
+        if (isInverted) {
+            fontStyles.add(FontStyle.Inverted);
+        } else {
+            fontStyles.remove(FontStyle.Inverted);
+        }
     }
 
     public String getImageValue() {
@@ -76,4 +99,19 @@ public class TicketElement {
         }
     }
 
+    public Justification getJustification() {
+        return justification;
+    }
+
+    public void setJustification(Justification justification) {
+        this.justification = justification;
+    }
+
+    public Underline getUnderline() {
+        return underline;
+    }
+
+    public void setUnderline(Underline underline) {
+        this.underline = underline;
+    }
 }

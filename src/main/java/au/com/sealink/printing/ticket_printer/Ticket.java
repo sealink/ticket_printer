@@ -10,6 +10,8 @@ public class Ticket {
 
     private ArrayList<TicketElement> elements = new ArrayList<>();
 
+    private TicketType ticketType = TicketType.Label;
+
     public Iterable<TicketElement> getElements() {
         return this.elements;
     }
@@ -22,5 +24,13 @@ public class Ticket {
 
     public void addElement(TicketElement element) {
         this.elements.add(element);
+    }
+
+    public TicketType getTicketType() {
+        return ticketType;
+    }
+
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
     }
 }
