@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).  
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).  
 
-## Unreleased
+## 1.4.0
 
 [TT-4530] - Remove no longer required code
 [TT-4529] - Add ESC/POS printing support
