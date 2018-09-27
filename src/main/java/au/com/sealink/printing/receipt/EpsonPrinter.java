@@ -4,15 +4,26 @@ import au.com.sealink.printing.receipt.*;
 import au.com.sealink.printing.ticket_printer.Justification;
 import au.com.sealink.printing.ticket_printer.Underline;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class EpsonPrinter implements IPrinter, AutoCloseable {
     // Printer hardware
-    public static final byte[] HW_INIT = {0x1b,0x40}; // Clear data in buffer and reset modes
+    private static final byte[] HW_INIT = {0x1b,0x40}; // Clear data in buffer and reset modes
 
     // Feed
     private static final byte[] FEED_LINES = {0x1B, 0x64}; //Feed Lines
+
+    // Feed control sequences
+    private static final byte[] CTL_LF        = {0x0a};          // Print and line feed
+
+    // Line Spacing
+    private static final byte[] LINE_SPACE_24 = {0x1b,0x33,24}; // Set the line spacing at 24
+    private static final byte[] LINE_SPACE_30 = {0x1b,0x33,30}; // Set the line spacing at 30
+
+    //Image
+    private static final byte[] SELECT_BIT_IMAGE_MODE = {0x1B, 0x2A, 33};
 
     //Colour
     private static final byte [] COLOUR_1 = {0x1d,0x72,0x00}; // Color 1
@@ -186,6 +197,26 @@ public class EpsonPrinter implements IPrinter, AutoCloseable {
             getConnector().write(TXT_BOLD_ON);
         } else {
             getConnector().write(TXT_BOLD_OFF);
+        }
+        return this;
+    }
+
+    @Override
+    public IPrinter printImage(BufferedImage image) throws IOException {
+        if (image != null) {
+            Image img = new Image();
+            int[][] pixels = img.getPixelsSlow(image);
+            for (int y = 0; y < pixels.length; y += 24) {
+                getConnector().write(LINE_SPACE_24);
+                getConnector().write(SELECT_BIT_IMAGE_MODE);
+                getConnector().write(new byte[]{(byte) (0x00ff & pixels[y].length), (byte) ((0xff00 & pixels[y].length) >> 8)});
+                for (int x = 0; x < pixels[y].length; x++) {
+                    getConnector().write(img.recollectSlice(y, x, pixels));
+                }
+                getConnector().write(CTL_LF);
+            }
+            getConnector().write(CTL_LF);
+            getConnector().write(LINE_SPACE_30);
         }
         return this;
     }

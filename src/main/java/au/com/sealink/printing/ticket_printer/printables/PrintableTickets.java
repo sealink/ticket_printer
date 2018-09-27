@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
+import au.com.sealink.printing.utils.ImageLoader;
 import org.apache.commons.codec.binary.Base64;
 
 import au.com.sealink.printing.ticket_printer.TicketElement;
@@ -61,7 +62,7 @@ public class PrintableTickets implements Printable {
 
     private PrintableElement printableElementFor(TicketElement element) {
         if (element.isImage()) {
-            Image img = loadImage(element);
+            Image img = ImageLoader.loadImage(element);
             if (img == null) {
                 return new PrintableNullElement(element);
             } else {
@@ -70,33 +71,6 @@ public class PrintableTickets implements Printable {
         } else {
             return new PrintableTextElement(element);
         }
-    }
-
-    private Image loadImage(TicketElement element) {
-        Image img = null;
-        try {
-            if (element.isImageBase64()) {
-                String imgEncodedInBase64 = element.getImageValue();
-                img = loadImgFromBase64(imgEncodedInBase64);
-            } else {
-                img = loadImageFromUrl(element.getImageValue());
-            }
-        } catch (IOException ex) {
-            Logger logger = Logger.getLogger(PrintableElement.class.getName());
-            logger.log(Level.SEVERE, "Could not load image:\n" + element.getImageValue(), ex);
-        }
-        return img;
-    }
-
-    private Image loadImageFromUrl(String imageUrlString) throws IOException {
-        URL url = new URL(imageUrlString);
-        return ImageIO.read(url);
-    }
-
-    private Image loadImgFromBase64(String imgEncodedInBase64) throws IOException {
-        byte[] imgData = Base64.decodeBase64(imgEncodedInBase64);
-        InputStream in = new ByteArrayInputStream(imgData);
-        return ImageIO.read(in);
     }
 
     // Configure the graphics canvas
