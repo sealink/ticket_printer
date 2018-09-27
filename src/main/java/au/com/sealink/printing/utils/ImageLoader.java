@@ -40,5 +40,4 @@ public class ImageLoader {
         InputStream in = new ByteArrayInputStream(imgData);
         return ImageIO.read(in);
     }
-
 }
