@@ -3,6 +3,7 @@ package au.com.sealink.printing.receipt;
 import au.com.sealink.printing.ticket_printer.Justification;
 import au.com.sealink.printing.ticket_printer.Underline;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -22,4 +23,5 @@ public interface IPrinter {
     IPrinter setJustification(Justification justification) throws IOException;
     IPrinter setColour(Colour colour) throws IOException;
     IPrinter setEmphasis(Boolean isEnabled) throws IOException;
+    IPrinter printImage(BufferedImage image) throws IOException;
 }

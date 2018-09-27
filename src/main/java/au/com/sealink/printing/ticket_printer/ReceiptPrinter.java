@@ -3,8 +3,10 @@ package au.com.sealink.printing.ticket_printer;
 import au.com.sealink.printing.receipt.CutMode;
 import au.com.sealink.printing.receipt.EpsonPrinter;
 import au.com.sealink.printing.ticket_printer.exceptions.NoSuchPrinterException;
+import au.com.sealink.printing.utils.ImageLoader;
 
 import javax.print.*;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -27,11 +29,15 @@ public class ReceiptPrinter {
             try (EpsonPrinter printer = new EpsonPrinter(bs)) {
                 printer.initialise();
                 for (TicketElement element : ticket.getElements()) {
-                    printer.setEmphasis(element.isBold());
-                    printer.setUnderline(element.getUnderline());
-                    printer.setJustification(element.getJustification());
-                    printer.text(element.getValue());
-                    printer.text(System.lineSeparator());
+                    if (element.isImage()) {
+                        printer.printImage(ImageLoader.loadImage(element));
+                    } else {
+                        printer.setEmphasis(element.isBold());
+                        printer.setUnderline(element.getUnderline());
+                        printer.setJustification(element.getJustification());
+                        printer.text(element.getValue());
+                        printer.text(System.lineSeparator());
+                    }
                 }
                 printer.feed(3);
                 printer.cut(CutMode.FULL);
