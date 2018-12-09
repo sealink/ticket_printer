@@ -27,16 +27,23 @@ class PrintableImageElement extends PrintableElement {
                 element.getY(),
                 getWidth(),
                 getHeight(),
-                Color.red,
                 null  // no observer
         );
     }
 
     private int getHeight() {
-        return (int) (img.getHeight(null) / printerResolution * fontMultiplier);
+        if (element.getHeight() != null) {
+            return element.getHeight();
+        } else {
+            return (int) (img.getHeight(null) / printerResolution * fontMultiplier);
+        }
     }
 
     private int getWidth() {
-        return (int) (img.getWidth(null) / printerResolution * fontMultiplier);
+        if (element.getWidth() != null) {
+            return element.getWidth();
+        } else {
+            return (int) (img.getWidth(null) / printerResolution * fontMultiplier);
+        }
     }
 }

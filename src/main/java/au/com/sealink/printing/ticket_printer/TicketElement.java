@@ -5,6 +5,8 @@ import java.util.EnumSet;
 public class TicketElement {
     private int x = 0;
     private int y = 0;
+    private Integer width;
+    private Integer height;
     private String value = "";
     private int fontSize = 10;
     private Justification justification = Justification.LEFT;
@@ -113,5 +115,21 @@ public class TicketElement {
 
     public void setUnderline(Underline underline) {
         this.underline = underline;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 }
