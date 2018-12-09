@@ -34,4 +34,27 @@ public class TicketElementTest {
     assertEquals(imageString.substring(imageOffset), imageticket.getImageValue());
   }
 
+  @Test
+  public void testBasicGettersAndSetters() {
+    TicketElement element = new TicketElement();
+    element.setBold(true);
+    element.setInverted(false);
+    element.setItalic(true);
+    element.setJustification(Justification.CENTRE);
+    element.setX(10);
+    element.setY(1);
+    element.setFontSize(10);
+    element.setHeight(50);
+    element.setWidth(30);
+
+    assertTrue(element.isBold());
+    assertFalse(element.isInverted());
+    assertTrue(element.isItalic());
+    assertEquals(Justification.CENTRE, element.getJustification());
+    assertEquals(10, element.getX());
+    assertEquals(1, element.getY());
+    assertEquals(10, element.getFontSize());
+    assertEquals(50, (int)element.getHeight());
+    assertEquals(30, (int)element.getWidth());
+  }
 }
