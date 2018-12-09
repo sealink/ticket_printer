@@ -27,7 +27,6 @@ class PrintableImageElement extends PrintableElement {
                 element.getY(),
                 getWidth(),
                 getHeight(),
-                Color.red,
                 null  // no observer
         );
     }
