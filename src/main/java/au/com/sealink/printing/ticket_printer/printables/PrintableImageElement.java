@@ -33,7 +33,7 @@ class PrintableImageElement extends PrintableElement {
 
     private int getHeight() {
         if (element.getHeight() != null) {
-            return (int)(element.getHeight());
+            return element.getHeight();
         } else {
             return (int) (img.getHeight(null) / printerResolution * fontMultiplier);
         }
@@ -41,7 +41,7 @@ class PrintableImageElement extends PrintableElement {
 
     private int getWidth() {
         if (element.getWidth() != null) {
-            return (int)(element.getWidth());
+            return element.getWidth();
         } else {
             return (int) (img.getWidth(null) / printerResolution * fontMultiplier);
         }
