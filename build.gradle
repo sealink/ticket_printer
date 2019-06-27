@@ -50,7 +50,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'commons-codec', name: 'commons-codec', version:'1.6'
+    compile group: 'commons-codec', name: 'commons-codec', version:'1.12'
     testCompile 'junit:junit:4.12'
 }
 
