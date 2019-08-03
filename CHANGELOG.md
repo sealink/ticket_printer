@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).  
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).  
 
+## Unreleased
+
+* [TT-5815] - Change travis distro to "trusty" so builds continue to work
+
 ## 1.6.0
 
 * [TT-4908] - Add ticket element width and height
