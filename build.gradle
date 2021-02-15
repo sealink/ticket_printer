@@ -51,7 +51,7 @@ repositories {
 
 dependencies {
     compile group: 'commons-codec', name: 'commons-codec', version:'1.6'
-    testCompile 'junit:junit:4.13.1'
+    testCompile 'junit:junit:4.13.2'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
