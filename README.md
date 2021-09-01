@@ -1,6 +1,6 @@
-[![Download](https://api.bintray.com/packages/sealink/maven/printing/images/download.svg) ](https://bintray.com/sealink/maven/printing/_latestVersion)
+[ ![Download](https://img.shields.io/github/v/release/sealink/ticket_printer) ](https://github.com/sealink/ticket_printer/packages/961689)
 [![Coverage Status](https://coveralls.io/repos/github/sealink/ticket_printer/badge.svg?branch=master)](https://coveralls.io/github/sealink/ticket_printer?branch=master)
-[![Build Status](https://travis-ci.org/sealink/ticket_printer.svg?branch=master)](https://travis-ci.org/sealink/ticket_printer)
+[![Build Status](https://github.com/sealink/ticket_printer/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/sealink/ticket_printer/actions)
 
 Back-end library to handle printing tickets to a physical printer
 
