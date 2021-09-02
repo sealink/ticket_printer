@@ -3,10 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).  
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).  
 
-## Unreleased
+## 1.7.0
 
 * [TT-5815] - Change travis distro to "trusty" so builds continue to work
-* [PLAT-45] Migrate from Travis to Github Action
+* [PLAT-45] - Migrate from Travis to Github Action
 
 ## 1.6.0
 
