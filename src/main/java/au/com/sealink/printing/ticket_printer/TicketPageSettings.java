@@ -9,18 +9,30 @@ public class TicketPageSettings {
 
     private double width; // = 87f;
     private double height; // = 57f;
-    private double margin; // = 2f;
-    // Not customisable at this stage (through refactor)
     private double xOffset = 1.3f;
     private double yOffset = 1.3f;
     private double printWidth;
     private double printHeight;
 
+    // TODO: TT-11520 clean up deprecated variable
+    private double margin; // = 2f;
+
     //  String baseUrl = "";
+    // TODO: TT-11520 clean up deprecated constructor
     public TicketPageSettings(double width, double height, double margin) {
         this.width = width;
         this.height = height;
         this.margin = margin;
+
+        this.printWidth = this.width - (2 * Math.abs(this.xOffset));
+        this.printHeight = this.height - (2 * Math.abs(this.yOffset));
+    }
+
+    public TicketPageSettings(double width, double height, double marginX, double marginY) {
+        this.width = width;
+        this.height = height;
+        this.xOffset = marginX;
+        this.yOffset = marginY;
 
         this.printWidth = this.width - (2 * Math.abs(this.xOffset));
         this.printHeight = this.height - (2 * Math.abs(this.yOffset));

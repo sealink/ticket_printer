@@ -26,8 +26,13 @@ public class TicketPrinter {
         this.printerJob = PrinterJob.getPrinterJob();
     }
 
+    // TODO: TT-11520 clean up deprecated implementation
     public void setTicketPageSettings(double width, double height, double margin) {
         this.ticketPageSettings = new TicketPageSettings(width, height, margin);
+    }
+
+    public void setTicketPageSettings(double width, double height, double marginX, double marginY) {
+        this.ticketPageSettings = new TicketPageSettings(width, height, marginX, marginY);
     }
 
     public void setTicketPageSettings(TicketPageSettings ticketPageSettings) {
