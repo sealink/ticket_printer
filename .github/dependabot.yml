@@ -1,17 +1,17 @@
 version: 2
 updates:
-- package-ecosystem: gradle
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: com.github.kt3k.coveralls
-    versions:
-    - "> 2.8.2"
-  - dependency-name: commons-codec:commons-codec
-    versions:
-    - "> 1.6"
-  - dependency-name: net.nemerosa.versioning
-    versions:
-    - "> 2.7.1"
+  - package-ecosystem: gradle
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: com.github.kt3k.coveralls
+        versions:
+          - "> 2.12.2"
+      - dependency-name: commons-codec:commons-codec
+        versions:
+          - "> 1.6"
+      - dependency-name: net.nemerosa.versioning
+        versions:
+          - "> 2.7.1"

@@ -1,9 +1,8 @@
-package au.com.sealink.printing.ticket_printer;
-
-import java.awt.print.PageFormat;
-import java.awt.print.Paper;
+package au.com.sealink.printing.ticketprinter;
 
 import au.com.sealink.printing.utils.NumberConverter;
+import java.awt.print.PageFormat;
+import java.awt.print.Paper;
 
 public class TicketPageSettings {
 

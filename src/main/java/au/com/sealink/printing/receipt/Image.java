@@ -36,9 +36,13 @@ public class Image {
 
     private boolean shouldPrintColor(int col) {
         final int threshold = 127;
-        int a, r, g, b, luminance;
+        int a;
+        int r;
+        int g;
+        int b;
+        int luminance;
         a = (col >> 24) & 0xff;
-        if (a != 0xff) {// Ignore transparencies
+        if (a != 0xff) { // Ignore transparencies
             return false;
         }
         r = (col >> 16) & 0xff;

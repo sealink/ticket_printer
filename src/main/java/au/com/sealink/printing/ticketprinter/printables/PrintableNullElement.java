@@ -1,8 +1,7 @@
-package au.com.sealink.printing.ticket_printer.printables;
+package au.com.sealink.printing.ticketprinter.printables;
 
+import au.com.sealink.printing.ticketprinter.TicketElement;
 import java.awt.Graphics2D;
-
-import au.com.sealink.printing.ticket_printer.TicketElement;
 
 class PrintableNullElement extends PrintableElement {
 

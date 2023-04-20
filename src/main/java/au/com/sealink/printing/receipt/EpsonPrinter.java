@@ -1,8 +1,8 @@
 package au.com.sealink.printing.receipt;
 
 import au.com.sealink.printing.receipt.*;
-import au.com.sealink.printing.ticket_printer.Justification;
-import au.com.sealink.printing.ticket_printer.Underline;
+import au.com.sealink.printing.ticketprinter.Justification;
+import au.com.sealink.printing.ticketprinter.Underline;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -74,7 +74,7 @@ public class EpsonPrinter implements IPrinter, AutoCloseable {
 
     @Override
     public IPrinter cut(CutMode mode) throws IOException {
-        switch(mode) {
+        switch (mode) {
             case PARTIAL:
                 getConnector().write(PAPER_PART_CUT);
                 break;

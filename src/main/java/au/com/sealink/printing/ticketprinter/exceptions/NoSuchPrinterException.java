@@ -1,4 +1,4 @@
-package au.com.sealink.printing.ticket_printer.exceptions;
+package au.com.sealink.printing.ticketprinter.exceptions;
 
 public class NoSuchPrinterException extends Exception {
 
