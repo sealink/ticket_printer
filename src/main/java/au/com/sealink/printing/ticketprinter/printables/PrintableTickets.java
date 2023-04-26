@@ -1,5 +1,9 @@
-package au.com.sealink.printing.ticket_printer.printables;
+package au.com.sealink.printing.ticketprinter.printables;
 
+import au.com.sealink.printing.ticketprinter.Ticket;
+import au.com.sealink.printing.ticketprinter.TicketElement;
+import au.com.sealink.printing.utils.ImageLoader;
+import au.com.sealink.printing.utils.NumberConverter;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,18 +22,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-
-import au.com.sealink.printing.utils.ImageLoader;
 import org.apache.commons.codec.binary.Base64;
 
-import au.com.sealink.printing.ticket_printer.TicketElement;
-import au.com.sealink.printing.ticket_printer.Ticket;
-import au.com.sealink.printing.utils.NumberConverter;
 
 /**
- * This class represents a printable ticket.
- * <p>
+ * <p> This class represents a printable ticket.
+ * 
  * Printable interface requires #print to be implemented (called when printed)
+ * 
  */
 public class PrintableTickets implements Printable {
 

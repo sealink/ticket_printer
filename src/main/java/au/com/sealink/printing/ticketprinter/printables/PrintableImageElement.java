@@ -1,10 +1,9 @@
-package au.com.sealink.printing.ticket_printer.printables;
+package au.com.sealink.printing.ticketprinter.printables;
 
+import au.com.sealink.printing.ticketprinter.TicketElement;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-
-import au.com.sealink.printing.ticket_printer.TicketElement;
 
 class PrintableImageElement extends PrintableElement {
 
@@ -18,8 +17,9 @@ class PrintableImageElement extends PrintableElement {
 
     @Override
     public void drawOn(Graphics2D g) {
-        if (img == null)
+        if (img == null) {
             return;
+        }
 
         g.drawImage(
                 this.img,

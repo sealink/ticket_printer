@@ -1,4 +1,4 @@
-package au.com.sealink.printing.ticket_printer;
+package au.com.sealink.printing.ticketprinter;
 
 import java.util.EnumSet;
 

@@ -1,10 +1,7 @@
 package au.com.sealink.printing.utils;
 
-import au.com.sealink.printing.ticket_printer.TicketElement;
-import au.com.sealink.printing.ticket_printer.printables.PrintableElement;
-import org.apache.commons.codec.binary.Base64;
-
-import javax.imageio.ImageIO;
+import au.com.sealink.printing.ticketprinter.TicketElement;
+import au.com.sealink.printing.ticketprinter.printables.PrintableElement;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -12,6 +9,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import org.apache.commons.codec.binary.Base64;
 
 public class ImageLoader {
     public static BufferedImage loadImage(TicketElement element) {

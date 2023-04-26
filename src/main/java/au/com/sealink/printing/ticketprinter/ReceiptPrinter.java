@@ -1,14 +1,14 @@
-package au.com.sealink.printing.ticket_printer;
+package au.com.sealink.printing.ticketprinter;
 
 import au.com.sealink.printing.receipt.CutMode;
 import au.com.sealink.printing.receipt.EpsonPrinter;
-import au.com.sealink.printing.ticket_printer.exceptions.NoSuchPrinterException;
+import au.com.sealink.printing.ticketprinter.exceptions.NoSuchPrinterException;
 import au.com.sealink.printing.utils.ImageLoader;
 
-import javax.print.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import javax.print.*;
 
 public class ReceiptPrinter {
     private final PrintService printer;
